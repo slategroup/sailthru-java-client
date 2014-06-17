@@ -4,7 +4,7 @@
   <groupId>com.sailthru.client</groupId>
   <artifactId>sailthru-java-client</artifactId>
   <version>1.3-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>bundle</packaging>
 
   <name>sailthru-java-client</name>
   <description>Java client library for Sailthru API</description>
@@ -71,6 +71,31 @@
             </configuration>
         </plugin>
         <plugin>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>maven-bundle-plugin</artifactId>
+            <version>2.4.0</version>
+            <extensions>true</extensions>
+            <configuration>
+                <instructions>
+                    <Bundle-SymbolicName>com.sailthru.client</Bundle-SymbolicName>
+                    <Import-Package>
+                        javax.jcr;resolution:=optional,
+                        *
+                    </Import-Package>
+                    <Export-Package>
+                        com.sailthru.client,
+                        com.sailthru.client.exceptions,
+                        com.sailthru.client.handler,
+                        com.sailthru.client.handler.response,
+                        com.sailthru.client.http,
+                        com.sailthru.client.params,
+                        com.sailthru.client.params.job,
+                        com.sailthru.client.params.query
+                    </Export-Package>
+                </instructions>
+            </configuration>
+        </plugin>
+        <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>2.8</version>
@@ -117,31 +142,31 @@
     <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
-        <version>4.3.1</version>
+        <version>4.1.2</version>
     </dependency>
 	
     <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpcore</artifactId>
-        <version>4.3</version>
+        <version>4.1.4</version>
     </dependency>
     
     <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpmime</artifactId>
-        <version>4.3.1</version>
+        <version>4.1.3</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.7.5</version>
+      <version>1.6.4</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>1.7.5</version>
+      <version>1.6.4</version>
     </dependency>
   </dependencies>
   
